@@ -1,4 +1,4 @@
-package becker;
+package Ejercicio1;
 
 public class FutbolMain {
 

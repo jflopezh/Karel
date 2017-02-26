@@ -1,4 +1,4 @@
-package becker;
+package Ejercicio1;
 import becker.robots.*;
 import jdk.nashorn.internal.ir.ForNode;
 
