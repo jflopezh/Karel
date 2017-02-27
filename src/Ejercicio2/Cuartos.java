@@ -5,7 +5,7 @@ public class Cuartos {
     private City c;
     private Robot r;
     private Thing[] Cosas;
-    private Wall[] Puertas;
+    private Wall[] Paredes;
     private Numero Num1;
     private Numero Num2;
     private Numero Num3;
@@ -16,7 +16,8 @@ public class Cuartos {
         Num1 = new Numero(n1, 1);
         Num2 = new Numero(n2, 2);
         Num3 = new Numero(n3, 3);
-        Cosas= new Thing[39];
+        Cosas = new Thing[39];
+        Paredes = new Wall[35];
         int x = 0;
         for(int i=1;i<6;i++){
             for(int j=1;j<10;j++){
@@ -32,7 +33,28 @@ public class Cuartos {
                 Cosas[x]=new Thing(c, i, j);
                 x++;
             }
-        }    
+        }
+        int y = 0;
+        for(int i=1;i<6;i++){
+            for(int j=1;j<10;j++){
+                if(i==1){
+                    Paredes[y]=new Wall(c, i, j, Direction.NORTH);
+                    y++;
+                }
+                if(j==1||j==4||j==7){
+                    Paredes[y]=new Wall(c, i, j, Direction.WEST);
+                    y++;
+                }
+                if(i==5&&j!=2&&j!=5&&j!=8){
+                    Paredes[y]=new Wall(c, i, j, Direction.SOUTH);
+                    y++;
+                }
+                if(j==9){
+                    Paredes[y]=new Wall(c, i, j, Direction.EAST);
+                    y++;
+                }
+            }
+        }
     }
     
     public void Entrar(){
