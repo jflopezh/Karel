@@ -1,9 +1,10 @@
 package Ejercicio2;
+
 import becker.robots.*;
 
 public class Cuartos {
-    private City c;
-    private Robot r;
+    private City Ciudad;
+    private Robot Karel;
     private Thing[] Cosas;
     private Wall[] Paredes;
     private Numero Num1;
@@ -11,8 +12,9 @@ public class Cuartos {
     private Numero Num3;
     
     public Cuartos(int n1, int n2, int n3){
-        c = new City(10, 12);
-        r = new Robot(c, 6, 2, Direction.NORTH);
+        Ciudad = new City(10, 12);
+        Ciudad.setFrameTitle("Ejercicio 2");
+        Karel = new Robot(Ciudad, 6, 2, Direction.NORTH);
         Num1 = new Numero(n1, 1);
         Num2 = new Numero(n2, 2);
         Num3 = new Numero(n3, 3);
@@ -30,7 +32,7 @@ public class Cuartos {
                 if(j>=7)
                     if(Num3.noDibujar(i, j))
                         continue;
-                Cosas[x]=new Thing(c, i, j);
+                Cosas[x]=new Thing(Ciudad, i, j);
                 x++;
             }
         }
@@ -38,19 +40,19 @@ public class Cuartos {
         for(int i=1;i<6;i++){
             for(int j=1;j<10;j++){
                 if(i==1){
-                    Paredes[y]=new Wall(c, i, j, Direction.NORTH);
+                    Paredes[y]=new Wall(Ciudad, i, j, Direction.NORTH);
                     y++;
                 }
                 if(j==1||j==4||j==7){
-                    Paredes[y]=new Wall(c, i, j, Direction.WEST);
+                    Paredes[y]=new Wall(Ciudad, i, j, Direction.WEST);
                     y++;
                 }
                 if(i==5&&j!=2&&j!=5&&j!=8){
-                    Paredes[y]=new Wall(c, i, j, Direction.SOUTH);
+                    Paredes[y]=new Wall(Ciudad, i, j, Direction.SOUTH);
                     y++;
                 }
                 if(j==9){
-                    Paredes[y]=new Wall(c, i, j, Direction.EAST);
+                    Paredes[y]=new Wall(Ciudad, i, j, Direction.EAST);
                     y++;
                 }
             }
@@ -59,43 +61,43 @@ public class Cuartos {
     
     public void Entrar(){
         for(int i=0;i<3;i++)
-            r.move();
-        r.turnLeft();
+            Karel.move();
+        Karel.turnLeft();
     }
     
     public boolean[] EvaluarCuarto(){
         boolean[] x = new boolean[7];
-        x[6]=r.canPickThing();
-        r.move();
+        x[6]=Karel.canPickThing();
+        Karel.move();
         for(int i=0;i<3;i++)
-            r.turnLeft();
-        r.move();
-        x[5]=r.canPickThing();
-        r.turnLeft();
-        r.turnLeft();
-        r.move();
-        r.move();
+            Karel.turnLeft();
+        Karel.move();
+        x[5]=Karel.canPickThing();
+        Karel.turnLeft();
+        Karel.turnLeft();
+        Karel.move();
+        Karel.move();
         for(int i=4;i>0;i--){
-            x[i]=r.canPickThing();
-            r.move();
+            x[i]=Karel.canPickThing();
+            Karel.move();
             if(i!=2)
-                r.turnLeft();
-            r.move();
+                Karel.turnLeft();
+            Karel.move();
         }
-        x[0]=r.canPickThing();
+        x[0]=Karel.canPickThing();
         return x;
     }
     
     public void Salir(){
-        r.turnLeft();
+        Karel.turnLeft();
         for(int i=0;i<5;i++)
-            r.move();
+            Karel.move();
     }
     
     public void Siguiente(){
-        r.turnLeft();
+        Karel.turnLeft();
         for(int i=0;i<3;i++)
-            r.move();
-        r.turnLeft();
+            Karel.move();
+        Karel.turnLeft();
     }
 }

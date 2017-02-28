@@ -1,14 +1,17 @@
 package Ejercicio1;
+
 import becker.robots.*;
 
 public class Futbol {
     private final Robot Karel;
     private final City Ciudad;
     private final Thing Balon;
-    private final Wall[] Paredes = new Wall[8];
+    private final Wall[] Paredes;
     
     public Futbol(){
+        this.Paredes = new Wall[8];
         this.Ciudad = new City(5, 9);
+        Ciudad.setFrameTitle("Ejecicio 1");
         this.Balon = new Thing(this.Ciudad, 3, 8);
         this.Karel = new Robot(this.Ciudad, 3, 8, Direction.WEST);
         int x = 0;

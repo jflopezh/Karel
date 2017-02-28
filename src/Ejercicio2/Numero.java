@@ -8,7 +8,7 @@ public class Numero {
     public Numero(int v, int c){
         Valor = v;
         Cuarto = c;
-        n = (c*3)-2;
+        n = (3*Cuarto)-2;
     }
     
     public boolean noDibujar(int i, int j){
